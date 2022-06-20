@@ -17,7 +17,7 @@ class Skill extends Model
      * @var array
      */
 
-    protected $fillable = ['skill', 'years_experience', 'seniority_rating_id'];
+    protected $fillable = ['skill', 'years_experience', 'seniority_rating_id', 'employee_id'];
 
     /**
      * Get employee this skill belongs to.
@@ -30,8 +30,8 @@ class Skill extends Model
     /**
      * Get Seniority Rating of this skill.
      */
-    public function seniorityRating(): HasOne
+    public function seniority_rating(): BelongsTo
     {
-        return $this->hasOne(SeniorityRating::class);
+        return $this->belongsTo(SeniorityRating::class);
     }
 }
