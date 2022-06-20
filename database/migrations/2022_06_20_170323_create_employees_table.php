@@ -19,13 +19,12 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('contact_number');
-            $table->string('email_address');
+            $table->string('email_address')->unique();
             $table->date('date_of_birth');
             $table->string('street_address');
             $table->string('city');
             $table->string('postal_code');
             $table->string('country');
-            $table->integer('skill_id');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateSeniorityRatingsTable extends Migration
     {
         Schema::create('seniority_ratings', function (Blueprint $table) {
             $table->id();
-            $table->string('skill');
+            $table->string('title');
             $table->timestamps();
         });
     }

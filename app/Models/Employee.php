@@ -14,5 +14,5 @@ class Employee extends Model
      *
      * @var array
      */
-    protected $fillable = ['employee_id', 'first_name', 'last_name', 'contact_number', 'email_address', 'date_of_birth', 'street_address', 'city', 'postal_code', 'country', 'skill_id'];
+    protected $fillable = ['employee_id', 'first_name', 'last_name', 'contact_number', 'email_address', 'date_of_birth', 'street_address', 'city', 'postal_code', 'country'];
 }
