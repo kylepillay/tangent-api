@@ -21,6 +21,17 @@ class EmployeeController extends Controller
         return response(json_encode($employees), 200);
     }
 
+    /**
+     * Display a single item of the resource.
+     *
+     * @return Response
+     */
+    public function show($id) {
+        $employee = Employee::firstOrFail($id);
+
+        return response(json_encode($employee))l
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -79,8 +90,6 @@ class EmployeeController extends Controller
         ]);
 
         Employee::find($id)->update($request->all());
-
-        $skills = Employee::find($id)->skills();
 
         foreach ($request->all()['skills'] as $skillData) {
             Skill::find($skillData['id'])->update($skillData);
