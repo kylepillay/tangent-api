@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index(): Response
     {
-        $employees = Employee::with('skills.seniority_rating')->paginate(10);
+        $employees = Employee::with('skills.seniority_rating')->get();
 
         return response(json_encode($employees), 200);
     }
