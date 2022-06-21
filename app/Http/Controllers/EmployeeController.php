@@ -27,7 +27,7 @@ class EmployeeController extends Controller
      * @return Response
      */
     public function show($id) {
-        $employee = Employee::firstOrFail($id);
+        $employee = Employee::find($id);
 
         return response(json_encode($employee));
     }
