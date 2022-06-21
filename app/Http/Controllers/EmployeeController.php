@@ -29,7 +29,7 @@ class EmployeeController extends Controller
     public function show($id) {
         $employee = Employee::firstOrFail($id);
 
-        return response(json_encode($employee))l
+        return response(json_encode($employee));
     }
 
 
