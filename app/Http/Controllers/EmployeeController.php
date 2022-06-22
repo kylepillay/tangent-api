@@ -7,6 +7,7 @@ use App\Models\Skill;
 use App\Models\SeniorityRating;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class EmployeeController extends Controller
 {
@@ -69,7 +70,8 @@ class EmployeeController extends Controller
             'country' => ['required']
         ]);
 
-        Employee::create($request->all());
+        $employee = Employee::create($request->all());
+        $employee->employee_id = Str::random(2).random_int(1000, 9999);
 
         foreach($request->all()['skills'] as $skillData) {
             $skill = Skill::create($skillData);
