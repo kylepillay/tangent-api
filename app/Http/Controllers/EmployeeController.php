@@ -108,10 +108,11 @@ class EmployeeController extends Controller
             'country' => ['required']
         ]);
 
-        Employee::find($id)->update($request->all());
+        $employee = Employee::find($id)->update($request->all());
 
         foreach ($request->all()['skills'] as $skillData) {
-            Skill::find($skillData['id'])->update($skillData);
+            $skill = Skill::updateOrCreate($skillData);
+            $employee->skills()->save($skill);
         }
 
         return response(json_encode([
