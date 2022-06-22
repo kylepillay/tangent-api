@@ -25,5 +25,13 @@ class Employee extends Model
     {
         return $this->hasMany(Skill::class);
     }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function ($employee) {
+            $employee->employee_id = Str::random(2).random_int(1000, 9999);
+        });
+    }
 }
 

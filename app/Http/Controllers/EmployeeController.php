@@ -73,6 +73,7 @@ class EmployeeController extends Controller
         $employee = Employee::create($request->all());
 
         foreach($request->all()['skills'] as $skillData) {
+            $skillData['employee_id'] = $employee->id;
             $skill = Skill::create($skillData);
             $skill->seniority_rating_id = intval($skillData['seniority_rating_id']);
             $skill->save();
