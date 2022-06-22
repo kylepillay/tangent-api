@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class CreateEmployeesTable extends Migration
 {
@@ -15,7 +16,7 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('employee_id');
+            $table->string('employee_id')->default(Str::random(2).random_int(1000, 9999));
             $table->string('first_name');
             $table->string('last_name');
             $table->string('contact_number');

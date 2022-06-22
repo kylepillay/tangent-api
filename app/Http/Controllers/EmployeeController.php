@@ -71,7 +71,6 @@ class EmployeeController extends Controller
         ]);
 
         $employee = Employee::create($request->all());
-        $employee->employee_id = Str::random(2).random_int(1000, 9999);
 
         foreach($request->all()['skills'] as $skillData) {
             $skill = Skill::create($skillData);
