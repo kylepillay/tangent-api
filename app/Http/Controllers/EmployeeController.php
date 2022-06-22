@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Skill;
+use App\Models\SeniorityRating;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -20,6 +21,20 @@ class EmployeeController extends Controller
 
         return response(json_encode($employees), 200);
     }
+
+    /**
+     * Display a listing of Seniority Ratings.
+     *
+     * @return Response
+     */
+    public function seniorityRatings(): Response
+    {
+        $seniorityRatings = SeniorityRating::all();
+
+        return response(json_encode($seniorityRatings), 200);
+    }
+
+
 
     /**
      * Display a single item of the resource.

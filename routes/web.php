@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/api/v1/employees', EmployeeController::class);
+Route::get('/api/v1/seniority_ratings', [EmployeeController::class, 'seniorityRatings']);
