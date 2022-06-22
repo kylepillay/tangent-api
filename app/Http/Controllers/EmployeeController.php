@@ -76,8 +76,11 @@ class EmployeeController extends Controller
             $skillData['employee_id'] = $employee->id;
             $skill = Skill::create($skillData);
             $skill->seniority_rating_id = intval($skillData['seniority_rating_id']);
-            $skill->save();
+            $employee->skills()->push($skill);
         }
+
+        $employee->skills()->saveMany($employee->items->all());
+        $employee->save();
 
         return response(json_encode([
             'Entry created successfully.'
