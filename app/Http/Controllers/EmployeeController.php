@@ -109,10 +109,12 @@ class EmployeeController extends Controller
         ]);
 
         $employee = Employee::find($id)->update($request->all());
+        $employee->skills()->delete();
 
-        foreach ($request->all()['skills'] as $skillData) {
-            unset($skillData->seniority_rating);
-            $skill = Skill::updateOrCreate($skillData);
+        foreach($request->all()['skills'] as $skillData) {
+            $skillData['employee_id'] = $employee->id;
+            $skill = Skill::create($skillData);
+            $skill->seniority_rating_id = intval($skillData['seniority_rating_id']);
             $employee->skills()->save($skill);
         }
 
