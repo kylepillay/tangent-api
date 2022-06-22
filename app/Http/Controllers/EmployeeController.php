@@ -108,7 +108,8 @@ class EmployeeController extends Controller
             'country' => ['required']
         ]);
 
-        $employee = Employee::find($id)->update($request->all());
+        Employee::find($id)->update($request->all());
+        $employee = Employee::find($id);
         $employee->skills()->delete();
 
         foreach($request->all()['skills'] as $skillData) {
