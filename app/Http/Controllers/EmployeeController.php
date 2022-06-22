@@ -111,6 +111,7 @@ class EmployeeController extends Controller
         $employee = Employee::find($id)->update($request->all());
 
         foreach ($request->all()['skills'] as $skillData) {
+            unset($skillData->seniority_rating);
             $skill = Skill::updateOrCreate($skillData);
             $employee->skills()->save($skill);
         }
